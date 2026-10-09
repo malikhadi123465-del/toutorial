@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A to Z Umrah Complete Guide & Interactive Book</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Amiri for Arabic and Plus Jakarta Sans for English -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                        parchment: {
+                            50: '#fcfbfa',
+                            100: '#f7f5f0',
+                            200: '#eae5d8',
+                            300: '#ded5c0',
+                            800: '#5c5341',
+                            900: '#3d372a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        arabic: ['"Amiri"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #2c241d;
+            background-image: radial-gradient(#3d3228 1px, transparent 1px), radial-gradient(#3d3228 1px, #2c241d 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+        .book-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.2);
+        }
+        .page-texture {
+            background-color: #fbf9f4;
+            background-image: linear-gradient(90deg, rgba(200, 190, 170, 0.05) 0%, rgba(0, 0, 0, 0.03) 100%);
+        }
+        .gold-border {
+            border-color: #d4af37;
+        }
+        .gold-text {
+            color: #b8860b;
+        }
+        /* Custom scrollbar for book pages */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1ede4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c5b358;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-parchment-900 flex flex-col justify-between font-sans selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-[#1f1915] border-b border-amber-600/30 text-parchment-100 py-4 px-6 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center text-white shadow-inner">
+                    <i class="fa-solid fa-kaaba text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide text-amber-200 font-arabic">???? ?????? (Umrah Guide)</h1>
+                    <p class="text-xs text-parchment-300">A to Z Complete Interactive Companion</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2 flex-wrap justify-center">
+                <button onclick="switchTab('guide')" id="nav-guide" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-amber-600 text-white shadow">
+                    <i class="fa-solid fa-book-open mr-2"></i>Guidebook
+                </button>
+                <button onclick="switchTab('checklist')" id="nav-checklist" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-[#2c241d] text-parchment-100 hover:bg-amber-900/50">
+                    <i class="fa-solid fa-list-check mr-2"></i>Tracker
+                </button>
+                <button onclick="switchTab('packing')" id="nav-packing" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-[#2c241d] text-parchment-100 hover:bg-amber-900/50">
+                    <i class="fa-solid fa-suitcase mr-2"></i>Packing & Tips
+                </button>
+                <button onclick="switchTab('duas')" id="nav-duas" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-[#2c241d] text-parchment-100 hover:bg-amber-900/50">
+                    <i class="fa-solid fa-hands-praying mr-2"></i>Duas & Surahs
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Book Container -->
+    <main class="flex-grow max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- BOOK WRAPPER -->
+        <div class="book-shadow rounded-2xl overflow-hidden bg-parchment-50 border-4 border-[#3d3228] relative flex flex-col lg:flex-row min-h-[750px]">
+            
+            <!-- Left Spine/Sidebar (Chapters Index) -->
+            <div class="w-full lg:w-80 bg-[#251f1a] text-parchment-200 p-6 flex flex-col justify-between border-r border-[#3d3228]">
+                <div>
+                    <div class="text-center pb-6 border-b border-amber-600/20 mb-6">
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold">Table of Contents</span>
+                        <h2 class="text-2xl font-bold font-arabic text-amber-100 mt-1">???? ??????</h2>
+                        <p class="text-xs text-parchment-300 mt-1">Select a chapter to read</p>
+                    </div>
+
+                    <!-- Chapter list -->
+                    <nav class="space-y-1.5" id="chapter-list">
+                        <!-- Populated via JS -->
+                    </nav>
+                </div>
+
+                <!-- Quick Progress Summary in Spine -->
+                <div class="mt-8 pt-4 border-t border-amber-600/20">
+                    <div class="flex justify-between text-xs mb-1.5 text-parchment-300">
+                        <span>Overall Progress</span>
+                        <span id="sidebar-progress-text">0% Completed</span>
+                    </div>
+                    <div class="w-full bg-[#171310] h-2.5 rounded-full overflow-hidden p-0.5 border border-amber-600/30">
+                        <div id="sidebar-progress-bar" class="bg-gradient-to-r from-amber-600 to-amber-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Main Page Area -->
+            <div class="flex-grow page-texture flex flex-col justify-between relative">
+                
+                <!-- Page Header / Bookmark bar -->
+                <div class="bg-amber-100/60 border-b border-amber-200 px-6 py-3 flex justify-between items-center text-xs text-amber-900 font-medium">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bookmark text-amber-700"></i>
+                        <span id="current-chapter-title">Chapter 1: Pre-Departure & Preparation</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span id="page-number-indicator" class="bg-amber-200/80 px-2.5 py-1 rounded-full font-semibold">Page 1 of 8</span>
+                        <button onclick="toggleAudioSimulation()" id="audio-toggle-btn" class="flex items-center gap-1.5 bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded-md transition shadow-sm text-xs">
+                            <i class="fa-solid fa-volume-high"></i> <span id="audio-status-text">Audio Guide: Off</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PAGE CONTENT CONTAINER (Tabs & Chapters) -->
+                <div class="p-6 sm:p-10 flex-grow overflow-y-auto max-h-[700px]" id="main-content-area">
+                    <!-- Dynamic Content Injected Here -->
+                </div>
+
+                <!-- Page Footer Controls (Prev / Next Chapter) -->
+                <div class="bg-amber-100/40 border-t border-amber-200 px-6 py-4 flex justify-between items-center">
+                    <button onclick="prevChapter()" id="prev-btn" class="flex items-center gap-2 px-4 py-2 bg-parchment-200 hover:bg-parchment-300 text-parchment-900 rounded-lg text-sm font-semibold transition disabled:opacity-40 disabled:cursor-not-allowed">
+                        <i class="fa-solid fa-arrow-left"></i> Previous Chapter
+                    </button>
+                    <div class="text-xs text-parchment-800 italic hidden sm:block">
+                        Tip: Check off completed items in your tracker!
+                    </div>
+                    <button onclick="nextChapter()" id="next-btn" class="flex items-center gap-2 px-4 py-2 bg-amber-700 hover:bg-amber-800 text-white rounded-lg text-sm font-semibold transition shadow">
+                        Next Chapter <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#191411] text-parchment-300 py-6 px-6 text-center text-xs border-t border-amber-600/20">
+        <div class="max-w-4xl mx-auto space-y-2">
+            <p class="font-arabic text-amber-300 text-sm">????? ?????? ?????? ?????????? ?????????? ?????????? ????????? ??????????</p>
+            <p>May Allah accept your Umrah, forgive your shortcomings, and grant you ease in every step of your journey.</p>
+            <p class="text-parchment-400 pt-2 border-t border-white/5">© 2026 A to Z Umrah Digital Companion & Interactive Journal</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Data Structure for Chapters, Guidebook, Duas, and Checklist
+        const chapters = [
+            {
+                id: 1,
+                title: "1. Pre-Departure & Intention (Niyyah)",
+                subtitle: "Preparing your heart, documents, and making spiritual intentions.",
+                icon: "fa-plane-departure",
+                content: `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900 font-arabic">????? ?????? (Preparation & Intention)</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Before stepping foot outside your home, purification of intention (Niyyah) for the sake of Allah (SWT) is paramount.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-amber-50 p-5 rounded-xl border border-amber-200">
+                                <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2"><i class="fa-solid fa-heart text-amber-600"></i> Spiritual Preparation</h4>
+                                <ul class="list-disc list-inside text-sm space-y-1.5 text-parchment-800">
+                                    <li>Seek forgiveness from family, friends, and anyone you may have wronged.</li>
+                                    <li>Clear all outstanding debts and fulfill financial obligations.</li>
+                                    <li>Renew your faith, increase in Istighfar (seeking forgiveness), and recite Durood upon Prophet Muhammad (PBUH).</li>
+                                </ul>
+                            </div>
+                            <div class="bg-amber-50 p-5 rounded-xl border border-amber-200">
+                                <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2"><i class="fa-solid fa-passport text-amber-600"></i> Document & Logistics</h4>
+                                <ul class="list-disc list-inside text-sm space-y-1.5 text-parchment-800">
+                                    <li>Ensure passport is valid for at least 6 months with approved Umrah Visa.</li>
+                                    <li>Keep hotel bookings, return tickets, and Nusuk app registration handy.</li>
+                                    <li>Prepare prescribed medications and basic emergency medical kit.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-amber-200 shadow-sm">
+                            <h4 class="font-bold text-parchment-900 mb-2 flex items-center gap-2"><i class="fa-solid fa-hands-praying text-amber-600"></i> Dua When Leaving Home</h4>
+                            <p class="text-arabic text-xl text-right my-3 leading-loose">?????? ???????? ??????????? ????? ???????? ????? ?????? ????? ??????? ?????? ?????????</p>
+                            <p class="text-sm italic text-amber-800">"Bismillahi, tawakkaltu 'alallahi, wa la hawla wa la quwwata illa billah."</p>
+                            <p class="text-sm text-parchment-800 mt-1"><strong>Translation:</strong> "In the name of Allah, I place my trust in Allah; there is no might nor power except with Allah." (Abu Dawud)</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "2. Airport & Flight to Jeddah/Madinah",
+                subtitle: "Navigating departure, baggage limits, and arrival procedures.",
+                icon: "fa-plane",
+                content: `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900">Journey to the Kingdom</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Whether landing in Jeddah (King Abdulaziz International Airport) or Madinah (Prince Mohammad Bin Abdulaziz International Airport), smooth navigation ensures peace of mind.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex gap-4 items-start bg-white p-4 rounded-xl border border-amber-200">
+                                <div class="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold">1</div>
+                                <div>
+                                    <h5 class="font-bold text-parchment-900">Before Boarding (If flying direct to Jeddah/Makkah)</h5>
+                                    <p class="text-sm text-parchment-800 mt-1">If you intend to perform Umrah immediately upon arrival, prepare to enter Ihram <strong>while on the plane</strong> approximately 30 to 45 minutes before crossing the Miqat boundary. Listen for the pilot's announcement.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-white p-4 rounded-xl border border-amber-200">
+                                <div class="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold">2</div>
+                                <div>
+                                    <h5 class="font-bold text-parchment-900">Immigration & Custom Clearance</h5>
+                                    <p class="text-sm text-parchment-800 mt-1">Keep your passport, visa copy, and accommodation details ready. Biometric scans (fingerprints and facial recognition) will be taken at the arrival terminal.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-white p-4 rounded-xl border border-amber-200">
+                                <div class="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold">3</div>
+                                <div>
+                                    <h5 class="font-bold text-parchment-900">Transportation to Makkah / Madinah</h5>
+                                    <p class="text-sm text-parchment-800 mt-1">Official taxis, Haramain High-Speed Railway (from Madinah to Makkah/Jeddah), and pre-booked buses are readily available outside arrival terminals.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "3. Ihram & Miqat (The Sacred State)",
+                subtitle: "Ghusl, clothing, prohibitions, and the sacred Talbiyah.",
+                icon: "fa-shirt",
+                content: `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900 font-arabic">????? ???????? (Entering Ihram)</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Ihram is both a state of ritual purity and the specific unstitched garments worn by men, while women wear modest regular Islamic attire.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-5 rounded-xl border border-amber-200">
+                                <h4 class="font-bold text-amber-900 mb-2"><i class="fa-solid fa-male text-amber-600 mr-2"></i> For Men</h4>
+                                <ul class="list-disc list-inside text-sm space-y-1.5 text-parchment-800">
+                                    <li>Two unstitched white sheets (Izar wrapped around waist, Rida wrapped around upper body).</li>
+                                    <li>Footwear must not cover the ankles or top of the feet (sandals/flip-flops).</li>
+                                    <li>No stitched underwear, caps, or head coverings.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-amber-200">
+                                <h4 class="font-bold text-amber-900 mb-2"><i class="fa-solid fa-female text-amber-600 mr-2"></i> For Women</h4>
+                                <ul class="list-disc list-inside text-sm space-y-1.5 text-parchment-800">
+                                    <li>Any loose, modest Islamic clothing covering the entire body except face and hands.</li>
+                                    <li>Can wear stitched clothes, socks, and regular comfortable footwear.</li>
+                                    <li>Face veil (Niqab) is generally not worn while in Ihram in presence of non-mahrams, though head covering (Hijab) is mandatory.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
+                            <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2"><i class="fa-solid fa-volume-high text-amber-600"></i> The Talbiyah (Must be chanted frequently after Niyyah)</h4>
+                            <p class="text-arabic text-2xl text-right my-3 leading-loose">????????? ?????????? ?????????? ????????? ??? ??????? ???? ?????????? ????? ????????? ????????????? ???? ???????????? ??? ??????? ????</p>
+                            <p class="text-sm italic text-amber-800">"Labbaik Allahumma Labbaik, Labbaik la sharika laka labbaik. Innal-hamda wan-ni'mata laka wal-mulk, la sharika lak."</p>
+                            <p class="text-sm text-parchment-800 mt-1"><strong>Translation:</strong> "Here I am, O Allah, here I am. Here I am, You have no partner, here I am. Verily all praise and blessings are Yours, and all sovereignty, You have no partner."</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "4. Tawaf (Circumambulation around Kaaba)",
+                subtitle: "7 circuits, Idtiba', Ramal, and specific Duas.",
+                icon: "fa-rotate",
+                content: `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900 font-arabic">???? ?????? (Tawaf Rituals)</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Upon entering Masjid al-Haram, head towards Mataaf (the courtyard around the Kaaba) while maintaining Wudhu.</p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="bg-white p-4 rounded-xl border border-amber-200">
+                                <h5 class="font-bold text-parchment-900 flex items-center gap-2 text-amber-800"><i class="fa-solid fa-circle-dot"></i> Step-by-Step Tawaf Instructions</h5>
+                                <ul class="list-disc list-inside text-sm space-y-2 text-parchment-800 mt-2">
+                                    <li><strong>Starting Point:</strong> Align yourself with the <strong>Black Stone (Hajar al-Aswad)</strong>. Raise your right hand towards it saying <em>"Bismillahi Allahu Akbar"</em> and kiss it if possible, or wave/touch from afar.</li>
+                                    <li><strong>Direction:</strong> Keep the Kaaba to your <strong>left side</strong> at all times. Complete 7 full counter-clockwise circuits starting and ending at the Black Stone line.</li>
+                                    <li><strong>Men's Etiquette (Idtiba' & Ramal):</strong> For men, uncover the right shoulder during Tawaf (Idtiba') and walk briskly with small steps in the first 3 rounds (Ramal).</li>
+                                    <li><strong>Between Yemeni Corner & Black Stone:</strong> Recite the famous Quranic Dua: <br>
+                                    <span class="text-arabic text-lg block my-1 text-right">???????? ?????? ??? ?????????? ???????? ????? ????????? ???????? ??????? ??????? ????????</span>
+                                    <em>"Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar."</em></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 flex justify-between items-center">
+                                <div>
+                                    <h6 class="font-bold text-amber-900">Post-Tawaf Prayer</h6>
+                                    <p class="text-xs text-parchment-800 mt-0.5">After completing 7 rounds, cover your right shoulder and pray 2 Rak'ahs behind Maqam Ibrahim (or anywhere in Mataaf if crowded), reciting Surah Al-Kafirun in the 1st and Surah Al-Ikhlas in the 2nd.</p>
+                                </div>
+                                <span class="bg-amber-200 text-amber-900 font-bold text-xs px-3 py-1.5 rounded-lg shrink-0">Mandatory</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                title: "5. Sa'i (Walking between Safa & Marwah)",
+                subtitle: "7 trips between the hills, running at green markers.",
+                icon: "fa-person-walking",
+                content: `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900 font-arabic">??? ????? ??????? (Sa'i between Safa and Marwah)</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Commemorating the frantic search of water by Hazrat Hajar (AS) for her infant son Ismail (AS).</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-amber-200 space-y-4">
+                            <h4 class="font-bold text-parchment-900">How Sa'i Works:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-parchment-800">
+                                <div class="p-3 bg-amber-50 rounded-lg border border-amber-200">
+                                    <strong>Starting at Mount Safa:</strong> Climb Safa, face the Kaaba, raise your hands in Dua, and recite: <br>
+                                    <span class="text-arabic text-base block my-1 text-right">????? ???????? ????????????? ???? ????????? ???????</span>
+                                    <em>"Innas-safa wal-marwata min sha'airillah..."</em>
+                                </div>
+                                <div class="p-3 bg-amber-50 rounded-lg border border-amber-200">
+                                    <strong>Counting Trips (7 Total):</strong>
+                                    <ul class="list-disc list-inside mt-1 space-y-1">
+                                        <li>Safa to Marwah = 1 trip</li>
+                                        <li>Marwah to Safa = 2nd trip</li>
+                                        <li>Ends at Marwah on the 7th trip.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-xs text-parchment-800 italic">Note: Men should jog/run briskly between the illuminated green marker lights while women walk at a normal pace.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                title: "6. Halq / Taqseer (Shaving or Trimming Hair)",
+                subtitle: "Completing Umrah rites and exiting the state of Ihram.",
+                icon: "fa-scissors",
+                content: `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900 font-arabic">??? ?????? (Shaving or Clipping Hair)</h3>
+                            <p class="text-sm text-parchment-800 mt-1">This is the final ritual of Umrah which releases you from all restrictions of Ihram.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-5 rounded-xl border border-amber-200">
+                                <h4 class="font-bold text-amber-900 mb-2"><i class="fa-solid fa-user text-amber-600 mr-2"></i> For Men</h4>
+                                <p class="text-sm text-parchment-800">Men have two choices: <strong>Halq</strong> (completely shaving the head, highly recommended and brings extra reward) or <strong>Taqseer</strong> (trimming hair evenly across the entire head).</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-amber-200">
+                                <h4 class="font-bold text-amber-900 mb-2"><i class="fa-solid fa-user-nurse text-amber-600 mr-2"></i> For Women</h4>
+                                <p class="text-sm text-parchment-800">Women gather their hair together and trim approximately the length of a fingertip (about 1-2 cm) from the ends. Shaving is not permissible for women.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 text-center">
+                            <h4 class="font-bold text-emerald-900 text-lg">?? Mabrooq! Your Umrah is Complete</h4>
+                            <p class="text-sm text-emerald-800 mt-1">Once hair is trimmed or shaved, all prohibitions of Ihram are lifted. You can now change back into your regular comfortable clothing and offer Shukr (gratitude) to Allah.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 7,
+                title: "7. Visit to Madinah (Al-Masjid an-Nabawi)",
+                subtitle: "Rawdah Sharif, Salam upon Prophet (PBUH), and Riyad-ul-Jannah.",
+                icon: "fa-mosque",
+                content: `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900 font-arabic">????? ??????? ??????? (Madinah Munawwarah)</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Visiting Prophet's Mosque (Al-Masjid an-Nabawi) is not a ritual pillar of Umrah, but holds immense spiritual virtue and blessings.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-xl border border-amber-200">
+                                <h5 class="font-bold text-parchment-900">Offering Salam at the Blessed Chamber</h5>
+                                <p class="text-sm text-parchment-800 mt-1">Stand respectfully before the sacred resting place of Prophet Muhammad (PBUH) and his two companions (Abu Bakr and Umar RA), and whisper your Salam softly with immense love and reverence.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-amber-200">
+                                <h5 class="font-bold text-parchment-900">Riyad-ul-Jannah (The Garden of Paradise)</h5>
+                                <p class="text-sm text-parchment-800 mt-1">Located between the Prophet's Minbar and his Sacred Chamber. The Prophet (PBUH) said: <em>"Between my house and my pulpit is a garden from the gardens of Paradise."</em> (Booking via Nusuk app is mandatory).</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-amber-200">
+                                <h5 class="font-bold text-parchment-900">Key Historical Sites in Madinah</h5>
+                                <ul class="list-disc list-inside text-sm space-y-1 text-parchment-800 mt-1">
+                                    <li><strong>Masjid Quba:</strong> The first mosque built in Islam (Praying 2 Rak'ahs here equals the reward of an Umrah).</li>
+                                    <li><strong>Jabal Uhud & Shuhada Cemetery:</strong> The site of the historic Battle of Uhud.</li>
+                                    <li><strong>Masjid al-Qiblatain:</strong> Mosque of the two Qiblas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 8,
+                title: "8. Farewell Tawaf (Tawaf al-Wada')",
+                subtitle: "The final goodbye to the Holy Kaaba before returning home.",
+                icon: "fa-door-open",
+                content: `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900 font-arabic">???? ?????? (Farewell Tawaf)</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Before leaving Makkah for your home country, performing Tawaf al-Wada' is obligatory for international pilgrims.</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-amber-200 space-y-3">
+                            <h4 class="font-bold text-parchment-900">Key Rules of Farewell Tawaf:</h4>
+                            <ul class="list-disc list-inside text-sm space-y-2 text-parchment-800">
+                                <li>It should be the <strong>very last act</strong> you perform in Makkah before departing (shopping or packing should be done beforehand).</li>
+                                <li>Consists of 7 rounds around the Kaaba just like regular Tawaf, followed by 2 Rak'ahs.</li>
+                                <li>Women who are experiencing menstruation (Haiz) or postnatal bleeding are exempt from Tawaf al-Wada'.</li>
+                                <li>Leave the Haram with a heavy heart, supplicating for return visits to the House of Allah.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Duas and Surahs Data
+        const duasAndSurahs = [
+            {
+                title: "1. Surah Al-Fatihah",
+                arabic: "?????? ??????? ???????????? ?????????? ? ????????? ??????? ????? ????????????? ? ???????????? ?????????? ? ??????? ?????? ???????? ? ???????? ???????? ?????????? ??????????? ? ???????? ?????????? ?????????????? ? ??????? ????????? ?????????? ?????????? ?????? ???????????? ?????????? ????? ????????????",
+                transliteration: "Bismillahi-r-Rahmani-r-Rahim. Al-hamdu lillahi Rabbi-l-'alamin. Ar-Rahmani-r-Rahim. Maliki yawmi-d-din. Iyyaka na'budu wa iyyaka nasta'in. Ihdina-s-sirata-l-mustaqim. Sirata-l-ladhina an'amta 'alayhim ghayril-maghdubi 'alayhim wa la-ddallin.",
+                translation: "In the name of Allah, the Entirely Merciful, the Especially Merciful. [All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense. It is You we worship and You we ask for help. Guide us to the straight path - The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
+            },
+            {
+                title: "2. Surah Al-Ikhlas",
+                arabic: "?????? ??????? ???????????? ?????????? ? ???? ???? ??????? ?????? ? ??????? ????????? ? ???? ?????? ?????? ??????? ? ?????? ????? ????? ??????? ??????",
+                transliteration: "Bismillahi-r-Rahmani-r-Rahim. Qul huwallahu ahad. Allahu-s-samad. Lam yalid wa lam yulad. Wa lam yakun lahu kufuwan ahad.",
+                translation: "Say, 'He is Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is born, Nor is there to Him any equivalent.'"
+            },
+            {
+                title: "3. Surah Al-Kafirun",
+                arabic: "?????? ??????? ???????????? ?????????? ? ???? ??? ???????? ????????????? ? ??? ???????? ??? ??????????? ? ????? ??????? ?????????? ??? ???????? ? ????? ????? ??????? ???? ?????????? ? ????? ??????? ?????????? ??? ???????? ? ?????? ????????? ?????? ?????",
+                transliteration: "Bismillahi-r-Rahmani-r-Rahim. Qul ya ayyuha-l-kafirun. La a'budu ma ta'budun. Wa la antum 'abiduna ma a'bud. Wa la ana 'abidun ma 'abadtum. Wa la antum 'abiduna ma a'bud. Lakum dinukum waliya din.",
+                translation: "Say, 'O disbelievers, I do not worship what you worship. Nor are you worshippers of what I worship. Nor will I be a worshipper of what you worship. Nor will you be worshippers of what I worship. For you is your religion, and for me is my religion.'"
+            },
+            {
+                title: "4. Dua at Safa & Marwah",
+                arabic: "??????? ????????? ??????? ????????? ??????? ????????? ??? ?????? ?????? ??????? ???????? ??? ??????? ????? ???? ????????? ?????? ????????? ?????? ????? ????? ?????? ???????",
+                transliteration: "Allahu Akbar, Allahu Akbar, Allahu Akbar. La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa 'ala kulli shay'in qadir.",
+                translation: "Allah is the Greatest, Allah is the Greatest, Allah is the Greatest. There is no god except Allah alone, with no partner. His is the sovereignty and His is the praise, and He has power over all things."
+            }
+        ];
+
+        // Packing List Data
+        const packingCategories = [
+            {
+                category: "Clothing & Ihram",
+                items: [
+                    "2 Sets of Ihram sheets (for men)",
+                    "Modest loose clothing (Abayas/Shalwar Kameez)",
+                    "Comfortable walking shoes & slippers",
+                    "Undergarments & socks",
+                    "Unscented soap & shampoo (for Ihram state)"
+                ]
+            },
+            {
+                category: "Documents & Tech",
+                items: [
+                    "Original Passport & Visa copies",
+                    "Hotel booking & flight confirmations",
+                    "Smartphone with Nusuk & Tawakkalna apps",
+                    "Power bank & multi-region travel adapter",
+                    "Earphones for audio guides"
+                ]
+            },
+            {
+                category: "Health & Essentials",
+                items: [
+                    "Prescribed medications & personal first-aid",
+                    "Pain relievers (Paracetamol/Ibuprofen)",
+                    "Blister plasters for walking long distances",
+                    "Reusable water bottle (Zamzam friendly)",
+                    "Unscented wet wipes & pocket tissues"
+                ]
+            }
+        ];
+
+        // Checklist Data
+        let checklistData = [
+            { id: 'c1', text: "Renew intentions and seek forgiveness from family/friends", completed: false, category: "Preparation" },
+            { id: 'c2', text: "Pack passport, visa, tickets, and hotel bookings", completed: false, category: "Preparation" },
+            { id: 'c3', text: "Prepare Ihram clothing and travel essentials", completed: false, category: "Preparation" },
+            { id: 'c4', text: "Enter state of Ihram at Miqat & recite Talbiyah", completed: false, category: "Makkah & Umrah" },
+            { id: 'c5', text: "Perform 7 circuits of Tawaf around the Holy Kaaba", completed: false, category: "Makkah & Umrah" },
+            { id: 'c6', text: "Offer 2 Rak'ahs behind Maqam Ibrahim", completed: false, category: "Makkah & Umrah" },
+            { id: 'c7', text: "Perform Sa'i between Safa and Marwah (7 trips)", completed: false, category: "Makkah & Umrah" },
+            { id: 'c8', text: "Perform Halq (shaving) or Taqseer (trimming) of hair", completed: false, category: "Makkah & Umrah" },
+            { id: 'c9', text: "Visit Masjid an-Nabawi and Riyad-ul-Jannah in Madinah", completed: false, category: "Madinah Visit" },
+            { id: 'c10', text: "Perform Farewell Tawaf (Tawaf al-Wada') before returning", completed: false, category: "Departure" }
+        ];
+
+        let currentChapterIndex = 0;
+        let activeTab = 'guide'; // guide, checklist, packing, duas
+        let audioSimulationActive = false;
+
+        // Initialize App on Load
+        window.onload = function() {
+            renderChaptersList();
+            renderMainContent();
+            updateProgress();
+        };
+
+        function switchTab(tab) {
+            activeTab = tab;
+            // Update nav button styles
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-600', 'text-white', 'shadow');
+                btn.classList.add('bg-[#2c241d]', 'text-parchment-100');
+            });
+            document.getElementById(`nav-${tab}`).classList.remove('bg-[#2c241d]', 'text-parchment-100');
+            document.getElementById(`nav-${tab}`).classList.add('bg-amber-600', 'text-white', 'shadow');
+
+            renderMainContent();
+        }
+
+        function renderChaptersList() {
+            const listEl = document.getElementById('chapter-list');
+            listEl.innerHTML = '';
+            chapters.forEach((ch, idx) => {
+                const isActive = activeTab === 'guide' && currentChapterIndex === idx;
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium transition flex items-center gap-3 ${isActive ? 'bg-amber-600/30 text-amber-200 border border-amber-600/50' : 'text-parchment-300 hover:bg-white/5'}`;
+                btn.innerHTML = `<i class="fa-solid ${ch.icon} w-5 text-amber-400"></i> <span class="truncate">${ch.title}</span>`;
+                btn.onclick = () => {
+                    activeTab = 'guide';
+                    currentChapterIndex = idx;
+                    // Reset nav buttons highlight
+                    document.querySelectorAll('.nav-btn').forEach(b => {
+                        b.classList.remove('bg-amber-600', 'text-white', 'shadow');
+                        b.classList.add('bg-[#2c241d]', 'text-parchment-100');
+                    });
+                    document.getElementById('nav-guide').classList.remove('bg-[#2c241d]', 'text-parchment-100');
+                    document.getElementById('nav-guide').classList.add('bg-amber-600', 'text-white', 'shadow');
+                    
+                    renderChaptersList();
+                    renderMainContent();
+                };
+                listEl.appendChild(btn);
+            });
+        }
+
+        function renderMainContent() {
+            const contentArea = document.getElementById('main-content-area');
+            const chapterIndicator = document.getElementById('current-chapter-title');
+            const pageNumIndicator = document.getElementById('page-number-indicator');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (activeTab === 'guide') {
+                const ch = chapters[currentChapterIndex];
+                chapterIndicator.textContent = ch.title;
+                pageNumIndicator.textContent = `Page ${currentChapterIndex + 1} of ${chapters.length}`;
+                contentArea.innerHTML = ch.content;
+
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+                prevBtn.disabled = currentChapterIndex === 0;
+                nextBtn.disabled = currentChapterIndex === chapters.length - 1;
+                renderChaptersList();
+            } 
+            else if (activeTab === 'checklist') {
+                chapterIndicator.textContent = "Pilgrim Progress Tracker & Checklist";
+                pageNumIndicator.textContent = "Interactive Tracker";
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+
+                let html = `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900">Your Umrah Journey Checklist</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Check off each step as you progress through your holy journey.</p>
+                        </div>
+                        <div class="space-y-3">
+                `;
+
+                checklistData.forEach(item => {
+                    html += `
+                        <label class="flex items-center gap-4 bg-white p-4 rounded-xl border border-amber-200 cursor-pointer hover:bg-amber-50/50 transition shadow-sm">
+                            <input type="checkbox" ${item.completed ? 'checked' : ''} onchange="toggleChecklistItem('${item.id}')" class="w-5 h-5 text-amber-600 rounded border-amber-300 focus:ring-amber-500">
+                            <div class="flex-grow">
+                                <span class="text-sm font-medium ${item.completed ? 'line-through text-parchment-400' : 'text-parchment-900'}">${item.text}</span>
+                                <span class="block text-xs text-amber-700 mt-0.5">${item.category}</span>
+                            </div>
+                        </label>
+                    `;
+                });
+
+                html += `</div></div>`;
+                contentArea.innerHTML = html;
+            }
+            else if (activeTab === 'packing') {
+                chapterIndicator.textContent = "Packing List & Essential Tips";
+                pageNumIndicator.textContent = "Reference";
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+
+                let html = `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900">Essential Packing Guide & Mistakes to Avoid</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Be fully prepared with what to bring and common pitfalls to steer clear of.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                `;
+
+                packingCategories.forEach(cat => {
+                    html += `
+                        <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-amber-900 mb-3 border-b pb-2"><i class="fa-solid fa-suitcase-rolling text-amber-600 mr-2"></i> ${cat.category}</h4>
+                                <ul class="list-disc list-inside text-sm space-y-2 text-parchment-800">
+                    `;
+                    cat.items.forEach(i => {
+                        html += `<li>${i}</li>`;
+                    });
+                    html += `</ul></div></div>`;
+                });
+
+                html += `
+                        </div>
+                        <div class="bg-amber-50 p-5 rounded-xl border border-amber-200 mt-6">
+                            <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Common Mistakes to Avoid</h4>
+                            <ul class="list-disc list-inside text-sm space-y-1.5 text-parchment-800">
+                                <li>Crossing the Miqat without entering Ihram or missing the Niyyah.</li>
+                                <li>Using scented soaps, perfumes, or deodorants after entering Ihram.</li>
+                                <li>Forgetting to keep count of Tawaf circuits (use digital counters or beads).</li>
+                                <li>Covering the head (for men) or face/hands inappropriately during Ihram restrictions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                contentArea.innerHTML = html;
+            }
+            else if (activeTab === 'duas') {
+                chapterIndicator.textContent = "Essential Duas & Surahs";
+                pageNumIndicator.textContent = "Library";
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+
+                let html = `
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-amber-600 pl-4 py-1">
+                            <h3 class="text-xl font-bold text-parchment-900">Essential Duas, Surahs & Supplications</h3>
+                            <p class="text-sm text-parchment-800 mt-1">Recite these authentic Duas and Surahs throughout your sacred pilgrimage.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                `;
+
+                duasAndSurahs.forEach(d => {
+                    html += `
+                        <div class="bg-white p-6 rounded-xl border border-amber-200 shadow-sm space-y-3">
+                            <h4 class="font-bold text-amber-900 text-base">${d.title}</h4>
+                            <p class="text-arabic text-xl text-right leading-loose">${d.arabic}</p>
+                            <p class="text-sm italic text-amber-800"><strong>Transliteration:</strong> ${d.transliteration}</p>
+                            <p class="text-sm text-parchment-800 border-t pt-2 border-amber-100"><strong>Translation:</strong> ${d.translation}</p>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+                contentArea.innerHTML = html;
+            }
+        }
+
+        function nextChapter() {
+            if (currentChapterIndex < chapters.length - 1) {
+                currentChapterIndex++;
+                renderMainContent();
+            }
+        }
+
+        function prevChapter() {
+            if (currentChapterIndex > 0) {
+                currentChapterIndex--;
+                renderMainContent();
+            }
+        }
+
+        function toggleChecklistItem(id) {
+            const item = checklistData.find(i => i.id === id);
+            if (item) {
+                item.completed = !item.completed;
+                updateProgress();
+                renderMainContent();
+            }
+        }
+
+        function updateProgress() {
+            const completedCount = checklistData.filter(i => i.completed).length;
+            const percentage = Math.round((completedCount / checklistData.length) * 100);
+            
+            document.getElementById('sidebar-progress-text').textContent = `${percentage}% Completed`;
+            document.getElementById('sidebar-progress-bar').style.width = `${percentage}%`;
+        }
+
+        function toggleAudioSimulation() {
+            audioSimulationActive = !audioSimulationActive;
+            const statusText = document.getElementById('audio-status-text');
+            const btn = document.getElementById('audio-toggle-btn');
+            
+            if (audioSimulationActive) {
+                statusText.textContent = "Audio Guide: Playing...";
+                btn.classList.remove('bg-amber-600', 'hover:bg-amber-700');
+                btn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
+            } else {
+                statusText.textContent = "Audio Guide: Off";
+                btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
+                btn.classList.add('bg-amber-600', 'hover:bg-amber-700');
+            }
+        }
+    </script>
+</body>
+</html>
